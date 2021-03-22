@@ -1,9 +1,13 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.order(:name)
+    @customers = Customer.all
   end
 
-  def show
-    @customer = Customer.find(params[:id])
+  def alphabetized
+    @alpha = Customer.order(:name)
+  end
+
+  def missing_email
+    @no_email = Customer.where("email LIKE ''")
   end
 end
